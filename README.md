@@ -90,7 +90,7 @@ Telegram bot sends a brief report to a specified telegram chat by results of eac
 
 [Back to the table of contents ⬆](#TableOfContents)
 
-# <a name="AllureReport">Test results report in [Allure Report](https://jenkins.autotests.cloud/job/C20-miserylab-java_final/14/allure/)</a>
+# <a name="AllureReport">Test results report in [Allure Report](https://jenkins.autotests.cloud/job/C20-miserylab-api_test_project/6/allure/)</a>
 
 <p align="center">
   <img src="src/test/resources/images/allure1.png" alt="AllureReport1">
