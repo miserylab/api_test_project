@@ -1,8 +1,6 @@
 package petstore.api.specs;
 
 import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.filter.log.LogDetail;
-import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
@@ -33,5 +31,82 @@ public class UserSpec {
             .expectBody("message", notNullValue())
             .build();
 
+    public static RequestSpecification userPutRequestSpec = with()
+            .log().uri()
+            .log().method()
+            .log().body()
+            .filter(withCustomTemplates())
+            .contentType(JSON);
 
+    public static ResponseSpecification userPutResponseSpec = new ResponseSpecBuilder()
+            .log(STATUS)
+            .log(BODY)
+            .expectStatusCode(200)
+            .expectBody(matchesJsonSchemaInClasspath("schemas/success-user-update-response-schema.json"))
+            .expectBody("code", notNullValue())
+            .expectBody("type", notNullValue())
+            .expectBody("message", notNullValue())
+            .build();
+
+
+    public static RequestSpecification userGetRequestSpec = with()
+            .log().uri()
+            .log().method()
+            .log().body()
+            .filter(withCustomTemplates())
+            .contentType(JSON);
+
+    public static ResponseSpecification userGetResponseSpec = new ResponseSpecBuilder()
+            .log(STATUS)
+            .log(BODY)
+            .expectStatusCode(200)
+            .expectBody(matchesJsonSchemaInClasspath("schemas/success-get-user-response-schema.json"))
+            .build();
+
+    public static ResponseSpecification getUserNotFoundResponseSpec = new ResponseSpecBuilder()
+            .log(STATUS)
+            .log(BODY)
+            .expectStatusCode(404)
+            .expectBody(matchesJsonSchemaInClasspath("schemas/unsuccess-user-get-response-schema.json"))
+            .expectBody("code", notNullValue())
+            .expectBody("type", notNullValue())
+            .expectBody("message", notNullValue())
+            .build();
+
+    public static RequestSpecification userDeleteRequestSpec = with()
+            .log().uri()
+            .log().method()
+            .log().body()
+            .filter(withCustomTemplates())
+            .contentType(JSON);
+
+    public static ResponseSpecification userDeleteResponseSpec = new ResponseSpecBuilder()
+            .log(STATUS)
+            .log(BODY)
+            .expectStatusCode(200)
+            .expectBody(matchesJsonSchemaInClasspath("schemas/success-delete-user-response-schema.json"))
+            .expectBody("code", notNullValue())
+            .expectBody("type", notNullValue())
+            .expectBody("message", notNullValue())
+            .build();
+
+    public static ResponseSpecification userGetLoginResponseSpec = new ResponseSpecBuilder()
+            .log(STATUS)
+            .log(BODY)
+            .expectStatusCode(200)
+            .expectBody(matchesJsonSchemaInClasspath("schemas/success-login-user-response-schema.json"))
+            .expectBody("code", notNullValue())
+            .expectBody("type", notNullValue())
+            .expectBody("message", notNullValue())
+            .build();
+
+    public static ResponseSpecification userGetLogoutResponseSpec = new ResponseSpecBuilder()
+            .log(STATUS)
+            .log(BODY)
+            .expectStatusCode(200)
+            .expectBody(matchesJsonSchemaInClasspath("schemas/success-logout-user-response-schema.json"))
+            .expectBody("code", notNullValue())
+            .expectBody("type", notNullValue())
+            .expectBody("message", notNullValue())
+            .build();
 }

@@ -2,12 +2,10 @@ package petstore.api.utils;
 
 import petstore.api.models.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class TestData {
     RandomUtils random = new RandomUtils();
     public PostUserBodyModel createUserData = new PostUserBodyModel();
+
     {
         createUserData.setId(random.getRandomNumber());
         createUserData.setUsername(random.getRandomUserName());
@@ -19,39 +17,40 @@ public class TestData {
         createUserData.setUserStatus(random.getRandomNumber());
     }
 
-//    public PostUserBodyModel updateData = new PostUserBodyModel();
-//    {
-//        updateData.setName(random.getRandomUserName());
-//        updateData.setJob(random.getRandomJob());
-//    }
+    public PutUserBodyModel updateUserData = new PutUserBodyModel();
 
-    public String getUserId() {
-        return "2";
-    }
-
-    public String getNonExistedUserId() {
-        return "23";
-    }
-
-    public String getPage() {
-        return "1";
-    }
-
-    public Map<String,String> user_get_data = new HashMap<>();
     {
-        user_get_data.put("id", "2");
-        user_get_data.put("email", "janet.weaver@reqres.in");
-        user_get_data.put("first_name", "Janet");
-        user_get_data.put("last_name", "Weaver");
-        user_get_data.put("avatar", "https://reqres.in/img/faces/2-image.jpg");
+        updateUserData.setId(random.getRandomNumber());
+        updateUserData.setUsername(random.getRandomUserName());
+        updateUserData.setFirstName(random.getRandomFirstName());
+        updateUserData.setLastName(random.getRandomLastName());
+        updateUserData.setEmail(random.getRandomEmail());
+        updateUserData.setPassword(random.getRandomPassword());
+        updateUserData.setPhone(random.getRandomPhone());
+        updateUserData.setUserStatus(random.getRandomNumber());
     }
 
-    public Map<String,String> user_list_data = new HashMap<>();
+    public UserNotFoundResponseModel notFoundUserData = new UserNotFoundResponseModel();
+
     {
-        user_list_data.put("page", "1");
-        user_list_data.put("per_page", "6");
-        user_list_data.put("total", "12");
-        user_list_data.put("total_pages", "2");
+        notFoundUserData.setCode("1");
+        notFoundUserData.setType("error");
+        notFoundUserData.setMessage("User not found");
     }
 
+    public LoginUserResponseModel loggedUserData = new LoginUserResponseModel();
+
+    {
+        loggedUserData.setCode("200");
+        loggedUserData.setType("unknown");
+        loggedUserData.setMessage("logged in user session");
+    }
+
+    public LogoutUserResponseModel loggedOutUserData = new LogoutUserResponseModel();
+
+    {
+        loggedOutUserData.setCode("200");
+        loggedOutUserData.setType("unknown");
+        loggedOutUserData.setMessage("ok");
+    }
 }

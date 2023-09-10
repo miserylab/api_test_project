@@ -1,7 +1,6 @@
 package petstore.api.utils;
 
 import com.github.javafaker.Faker;
-import com.github.javafaker.PhoneNumber;
 
 public class RandomUtils {
     Faker faker = new Faker();
@@ -31,6 +30,6 @@ public class RandomUtils {
     }
 
     public Integer getRandomNumber() {
-        return faker.number().numberBetween(0,10);
+        return faker.number().numberBetween(0, 10);
     }
 }

@@ -6,16 +6,15 @@ import org.aeonbits.owner.Config;
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
         "system:properties",
-        "classpath:configs/base.properties",
         "classpath:configs/${env}.properties"
 })
 public interface WebConfig extends Config {
 
-    @Key("BaseUri")
+    @Key("baseUri")
     @DefaultValue("https://petstore.swagger.io")
     String getBaseUri();
 
-    @Key("BasePath")
+    @Key("basePath")
     @DefaultValue("/v2")
     String getBasePath();
 }

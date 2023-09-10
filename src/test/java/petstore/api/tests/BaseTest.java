@@ -1,11 +1,9 @@
 package petstore.api.tests;
 
-
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import petstore.api.config.WebConfig;
-import petstore.api.steps.UserSteps;
 import petstore.api.utils.TestData;
 
 public class BaseTest {
