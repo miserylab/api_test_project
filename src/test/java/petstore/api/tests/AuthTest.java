@@ -27,12 +27,12 @@ public class AuthTest extends BaseTest {
         PostUserBodyModel requestBody = testData.createUserData;
 
         createUser(testData.createUserData);
-        LoginUserResponseModel loggedUser = loginUser(requestBody.getUsername(), requestBody.getPassword());
+        LoginUserResponseModel loggedUserResponse = loginUser(requestBody.getUsername(), requestBody.getPassword());
 
         step("Проверить, что в ответе на запрос с указанием username удалённого пользователя выдаются корректные значения полей", () -> {
-            assertEquals(loggedUser.getCode(), testData.loggedUserData.getCode());
-            assertEquals(loggedUser.getType(), testData.loggedUserData.getType());
-            assertThat(loggedUser.getMessage(), startsWith(testData.loggedUserData.getMessage()));
+            assertEquals(loggedUserResponse.getCode(), testData.loggedUserResponseData.getCode());
+            assertEquals(loggedUserResponse.getType(), testData.loggedUserResponseData.getType());
+            assertThat(loggedUserResponse.getMessage(), startsWith(testData.loggedUserResponseData.getMessage()));
         });
     }
 
@@ -47,12 +47,12 @@ public class AuthTest extends BaseTest {
 
         createUser(testData.createUserData);
         loginUser(requestBody.getUsername(), requestBody.getPassword());
-        LogoutUserResponseModel loggedOutUser = logoutUser();
+        LogoutUserResponseModel loggedOutUserResponse = logoutUser();
 
         step("Проверить, что в ответе на запрос выдаются корректные значения полей", () -> {
-            assertEquals(loggedOutUser.getCode(), testData.loggedOutUserData.getCode());
-            assertEquals(loggedOutUser.getType(), testData.loggedOutUserData.getType());
-            assertEquals(loggedOutUser.getMessage(), testData.loggedOutUserData.getMessage());
+            assertEquals(loggedOutUserResponse.getCode(), testData.loggedOutUserResponseData.getCode());
+            assertEquals(loggedOutUserResponse.getType(), testData.loggedOutUserResponseData.getType());
+            assertEquals(loggedOutUserResponse.getMessage(), testData.loggedOutUserResponseData.getMessage());
         });
 
     }

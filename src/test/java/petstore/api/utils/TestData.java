@@ -17,6 +17,13 @@ public class TestData {
         createUserData.setUserStatus(random.getRandomNumber());
     }
 
+    public PostUserResponseModel createUserResponseData = new PostUserResponseModel();
+
+    {
+        createUserResponseData.setCode("200");
+        createUserResponseData.setType("unknown");
+    }
+
     public PutUserBodyModel updateUserData = new PutUserBodyModel();
 
     {
@@ -30,27 +37,41 @@ public class TestData {
         updateUserData.setUserStatus(random.getRandomNumber());
     }
 
-    public UserNotFoundResponseModel notFoundUserData = new UserNotFoundResponseModel();
+    public PutUserResponseModel updateUserResponseData = new PutUserResponseModel();
 
     {
-        notFoundUserData.setCode("1");
-        notFoundUserData.setType("error");
-        notFoundUserData.setMessage("User not found");
+        updateUserResponseData.setCode("200");
+        updateUserResponseData.setType("unknown");
     }
 
-    public LoginUserResponseModel loggedUserData = new LoginUserResponseModel();
+    public DeleteUserResponseModel deleteUserResponseData = new DeleteUserResponseModel();
 
     {
-        loggedUserData.setCode("200");
-        loggedUserData.setType("unknown");
-        loggedUserData.setMessage("logged in user session");
+        deleteUserResponseData.setCode("200");
+        deleteUserResponseData.setType("unknown");
     }
 
-    public LogoutUserResponseModel loggedOutUserData = new LogoutUserResponseModel();
+    public UserNotFoundResponseModel notFoundUserResponseData = new UserNotFoundResponseModel();
 
     {
-        loggedOutUserData.setCode("200");
-        loggedOutUserData.setType("unknown");
-        loggedOutUserData.setMessage("ok");
+        notFoundUserResponseData.setCode("1");
+        notFoundUserResponseData.setType("error");
+        notFoundUserResponseData.setMessage("User not found");
+    }
+
+    public LoginUserResponseModel loggedUserResponseData = new LoginUserResponseModel();
+
+    {
+        loggedUserResponseData.setCode("200");
+        loggedUserResponseData.setType("unknown");
+        loggedUserResponseData.setMessage("logged in user session");
+    }
+
+    public LogoutUserResponseModel loggedOutUserResponseData = new LogoutUserResponseModel();
+
+    {
+        loggedOutUserResponseData.setCode("200");
+        loggedOutUserResponseData.setType("unknown");
+        loggedOutUserResponseData.setMessage("ok");
     }
 }

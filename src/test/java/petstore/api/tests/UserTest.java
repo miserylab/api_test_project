@@ -25,8 +25,14 @@ public class UserTest extends BaseTest {
     void successfulCreateUser() {
         PostUserBodyModel requestBody = testData.createUserData;
 
-        createUser(testData.createUserData);
+        PostUserResponseModel response= createUser(testData.createUserData);
         GetUserResponseModel retrievedUser = successfullGetUserByUserName(requestBody.getUsername());
+
+        step("Проверить, что в ответе на запрос создания пользователя выдаются корректные значения полей", () -> {
+            assertEquals(response.getCode(), testData.createUserResponseData.getCode());
+            assertEquals(response.getType(), testData.createUserResponseData.getType());
+            assertEquals(Long.parseLong(response.getMessage()), retrievedUser.getId());
+        });
 
         step("Проверить, что у созданного пользователя значения совпадают с указанными в requestBody", () -> {
             assertEquals(requestBody.getId(), retrievedUser.getId());
@@ -49,8 +55,14 @@ public class UserTest extends BaseTest {
         PutUserBodyModel requestPutBody = testData.updateUserData;
 
         createUser(testData.createUserData);
-        updateUser(requestPostBody.getUsername(), testData.updateUserData);
+        PutUserResponseModel response = updateUser(requestPostBody.getUsername(), testData.updateUserData);
         GetUserResponseModel updatedUser = successfullGetUserByUserName(requestPutBody.getUsername());
+
+        step("Проверить, что в ответе на запрос изменения пользователя выдаются корректные значения полей", () -> {
+            assertEquals(response.getCode(), testData.updateUserResponseData.getCode());
+            assertEquals(response.getType(), testData.updateUserResponseData.getType());
+            assertEquals(Long.parseLong(response.getMessage()), updatedUser.getId());
+        });
 
         step("Проверить, что у изменённого пользователя значения совпадают с указанными в requestPutBody", () -> {
             assertEquals(requestPutBody.getId(), updatedUser.getId());
@@ -72,13 +84,19 @@ public class UserTest extends BaseTest {
         PostUserBodyModel requestBody = testData.createUserData;
 
         createUser(testData.createUserData);
-        deleleUser(requestBody.getUsername());
+        DeleteUserResponseModel response = deleleUser(requestBody.getUsername());
         UserNotFoundResponseModel deletedUser = unsuccessfullGetUserByUserName(requestBody.getUsername());
 
+        step("Проверить, что в ответе на запрос удаления пользователя выдаются корректные значения полей", () -> {
+            assertEquals(response.getCode(), testData.deleteUserResponseData.getCode());
+            assertEquals(response.getType(), testData.deleteUserResponseData.getType());
+            assertEquals(response.getMessage(), requestBody.getUsername());
+        });
+
         step("Проверить, что в ответе на запрос с указанием username удалённого пользователя выдаются корректные значения полей", () -> {
-            assertEquals(testData.notFoundUserData.getCode(), deletedUser.getCode());
-            assertEquals(testData.notFoundUserData.getType(), deletedUser.getType());
-            assertEquals(testData.notFoundUserData.getMessage(), deletedUser.getMessage());
+            assertEquals(testData.notFoundUserResponseData.getCode(), deletedUser.getCode());
+            assertEquals(testData.notFoundUserResponseData.getType(), deletedUser.getType());
+            assertEquals(testData.notFoundUserResponseData.getMessage(), deletedUser.getMessage());
         });
     }
 }
