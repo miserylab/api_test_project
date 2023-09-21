@@ -2,19 +2,20 @@ package petstore.api.utils;
 
 import petstore.api.models.*;
 
+import static petstore.api.utils.RandomUtils.*;
+
 public class TestData {
-    RandomUtils random = new RandomUtils();
     public PostUserBodyModel createUserData = new PostUserBodyModel();
 
     {
-        createUserData.setId(random.getRandomNumber());
-        createUserData.setUsername(random.getRandomUserName());
-        createUserData.setFirstName(random.getRandomFirstName());
-        createUserData.setLastName(random.getRandomLastName());
-        createUserData.setEmail(random.getRandomEmail());
-        createUserData.setPassword(random.getRandomPassword());
-        createUserData.setPhone(random.getRandomPhone());
-        createUserData.setUserStatus(random.getRandomNumber());
+        createUserData.setId(getRandomNumber());
+        createUserData.setUsername(getRandomUserName());
+        createUserData.setFirstName(getRandomFirstName());
+        createUserData.setLastName(getRandomLastName());
+        createUserData.setEmail(getRandomEmail());
+        createUserData.setPassword(getRandomPassword());
+        createUserData.setPhone(getRandomPhone());
+        createUserData.setUserStatus(getRandomNumber());
     }
 
     public PostUserResponseModel createUserResponseData = new PostUserResponseModel();
@@ -27,14 +28,14 @@ public class TestData {
     public PutUserBodyModel updateUserData = new PutUserBodyModel();
 
     {
-        updateUserData.setId(random.getRandomNumber());
-        updateUserData.setUsername(random.getRandomUserName());
-        updateUserData.setFirstName(random.getRandomFirstName());
-        updateUserData.setLastName(random.getRandomLastName());
-        updateUserData.setEmail(random.getRandomEmail());
-        updateUserData.setPassword(random.getRandomPassword());
-        updateUserData.setPhone(random.getRandomPhone());
-        updateUserData.setUserStatus(random.getRandomNumber());
+        updateUserData.setId(getRandomNumber());
+        updateUserData.setUsername(getRandomUserName());
+        updateUserData.setFirstName(getRandomFirstName());
+        updateUserData.setLastName(getRandomLastName());
+        updateUserData.setEmail(getRandomEmail());
+        updateUserData.setPassword(getRandomPassword());
+        updateUserData.setPhone(getRandomPhone());
+        updateUserData.setUserStatus(getRandomNumber());
     }
 
     public PutUserResponseModel updateUserResponseData = new PutUserResponseModel();

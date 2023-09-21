@@ -3,33 +3,33 @@ package petstore.api.utils;
 import com.github.javafaker.Faker;
 
 public class RandomUtils {
-    Faker faker = new Faker();
+    private static final Faker faker = new Faker();
 
-    public String getRandomUserName() {
+    public static String getRandomUserName() {
         return faker.name().username();
     }
 
-    public String getRandomFirstName() {
+    public static String getRandomFirstName() {
         return faker.name().firstName();
     }
 
-    public String getRandomLastName() {
+    public static String getRandomLastName() {
         return faker.name().lastName();
     }
 
-    public String getRandomEmail() {
+    public static String getRandomEmail() {
         return faker.internet().emailAddress();
     }
 
-    public String getRandomPassword() {
+    public static String getRandomPassword() {
         return faker.internet().password();
     }
 
-    public String getRandomPhone() {
+    public static String getRandomPhone() {
         return faker.phoneNumber().subscriberNumber(10);
     }
 
-    public Integer getRandomNumber() {
+    public static Integer getRandomNumber() {
         return faker.number().numberBetween(0, 10);
     }
 }
