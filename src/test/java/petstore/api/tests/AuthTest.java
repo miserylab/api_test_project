@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static petstore.api.steps.UserSteps.*;
 
 @Epic("Authorization")
+@Owner("o.demina")
 @Tag("api")
 public class AuthTest extends BaseTest {
 
@@ -21,7 +22,6 @@ public class AuthTest extends BaseTest {
     @Feature("Log in")
     @Story("Log in with credentials")
     @DisplayName("Успешный логин пользователя")
-    @Owner("o.demina")
     @Severity(BLOCKER)
     void successfullLogin() {
         PostUserBodyModel requestBody = testData.createUserData;
@@ -40,7 +40,6 @@ public class AuthTest extends BaseTest {
     @Feature("Log out")
     @Story("Logout")
     @DisplayName("Успешный логаут пользователя")
-    @Owner("o.demina")
     @Severity(BLOCKER)
     void successfullLogout() {
         PostUserBodyModel requestBody = testData.createUserData;

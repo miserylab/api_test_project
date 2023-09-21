@@ -5,74 +5,58 @@ import petstore.api.models.*;
 import static petstore.api.utils.RandomUtils.*;
 
 public class TestData {
-    public PostUserBodyModel createUserData = new PostUserBodyModel();
+    public PostUserBodyModel createUserData = PostUserBodyModel.builder()
+            .id(getRandomNumber())
+            .username(getRandomUserName())
+            .firstName(getRandomFirstName())
+            .lastName(getRandomLastName())
+            .email(getRandomEmail())
+            .password(getRandomPassword())
+            .phone(getRandomPhone())
+            .userStatus(getRandomNumber())
+            .build();
 
-    {
-        createUserData.setId(getRandomNumber());
-        createUserData.setUsername(getRandomUserName());
-        createUserData.setFirstName(getRandomFirstName());
-        createUserData.setLastName(getRandomLastName());
-        createUserData.setEmail(getRandomEmail());
-        createUserData.setPassword(getRandomPassword());
-        createUserData.setPhone(getRandomPhone());
-        createUserData.setUserStatus(getRandomNumber());
-    }
+    public PostUserResponseModel createUserResponseData = PostUserResponseModel.builder()
+            .code("200")
+            .type("unknown")
+            .build();
 
-    public PostUserResponseModel createUserResponseData = new PostUserResponseModel();
+    public PutUserBodyModel updateUserData = PutUserBodyModel.builder()
+            .id(getRandomNumber())
+            .username(getRandomUserName())
+            .firstName(getRandomFirstName())
+            .lastName(getRandomLastName())
+            .email(getRandomEmail())
+            .password(getRandomPassword())
+            .phone(getRandomPhone())
+            .userStatus(getRandomNumber())
+            .build();
 
-    {
-        createUserResponseData.setCode("200");
-        createUserResponseData.setType("unknown");
-    }
+    public PutUserResponseModel updateUserResponseData = PutUserResponseModel.builder()
+            .code("200")
+            .type("unknown")
+            .build();
 
-    public PutUserBodyModel updateUserData = new PutUserBodyModel();
+    public DeleteUserResponseModel deleteUserResponseData = DeleteUserResponseModel.builder()
+            .code("200")
+            .type("unknown")
+            .build();
 
-    {
-        updateUserData.setId(getRandomNumber());
-        updateUserData.setUsername(getRandomUserName());
-        updateUserData.setFirstName(getRandomFirstName());
-        updateUserData.setLastName(getRandomLastName());
-        updateUserData.setEmail(getRandomEmail());
-        updateUserData.setPassword(getRandomPassword());
-        updateUserData.setPhone(getRandomPhone());
-        updateUserData.setUserStatus(getRandomNumber());
-    }
+    public UserNotFoundResponseModel notFoundUserResponseData = UserNotFoundResponseModel.builder()
+            .code("1")
+            .type("error")
+            .message("User not found")
+            .build();
 
-    public PutUserResponseModel updateUserResponseData = new PutUserResponseModel();
+    public LoginUserResponseModel loggedUserResponseData = LoginUserResponseModel.builder()
+            .code("200")
+            .type("unknown")
+            .message("logged in user session")
+            .build();
 
-    {
-        updateUserResponseData.setCode("200");
-        updateUserResponseData.setType("unknown");
-    }
-
-    public DeleteUserResponseModel deleteUserResponseData = new DeleteUserResponseModel();
-
-    {
-        deleteUserResponseData.setCode("200");
-        deleteUserResponseData.setType("unknown");
-    }
-
-    public UserNotFoundResponseModel notFoundUserResponseData = new UserNotFoundResponseModel();
-
-    {
-        notFoundUserResponseData.setCode("1");
-        notFoundUserResponseData.setType("error");
-        notFoundUserResponseData.setMessage("User not found");
-    }
-
-    public LoginUserResponseModel loggedUserResponseData = new LoginUserResponseModel();
-
-    {
-        loggedUserResponseData.setCode("200");
-        loggedUserResponseData.setType("unknown");
-        loggedUserResponseData.setMessage("logged in user session");
-    }
-
-    public LogoutUserResponseModel loggedOutUserResponseData = new LogoutUserResponseModel();
-
-    {
-        loggedOutUserResponseData.setCode("200");
-        loggedOutUserResponseData.setType("unknown");
-        loggedOutUserResponseData.setMessage("ok");
-    }
+    public LogoutUserResponseModel loggedOutUserResponseData = LogoutUserResponseModel.builder()
+            .code("200")
+            .type("unknown")
+            .message("ok")
+            .build();
 }
